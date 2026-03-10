@@ -1,0 +1,19 @@
+{
+  "name": "stale-sphere",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.37.6",
+    "astro": "^5.6.1",
+    "playwright": "^1.58.2",
+    "remark-mermaidjs": "^7.0.0",
+    "sharp": "^0.34.2"
+  }
+}
