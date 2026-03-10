@@ -6,10 +6,10 @@ hero:
   tagline: Write, assemble, and execute RV32I assembly programs directly in the browser — no installation required.
   actions:
     - text: Get Started
-      link: /introduction
+      link: /aeris-docs/introduction/
       icon: right-arrow
       variant: primary
     - text: RISC-V Reference
-      link: /riscv/overview
+      link: /aeris-docs/riscv/overview
       icon: open-book
 ---
