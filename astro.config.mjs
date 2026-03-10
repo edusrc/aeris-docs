@@ -1,8 +1,10 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import remarkMermaid from 'remark-mermaidjs'
+import remarkMermaid from "remark-mermaidjs";
 
 export default defineConfig({
+  site: "https://edusrc.github.io",
+  base: "/aeris-docs/",
   integrations: [
     starlight({
       title: "ÆRIS DOCS",
@@ -60,7 +62,7 @@ export default defineConfig({
               link: "/riscv/pseudo-instructions",
             },
             { label: "Syscalls", link: "/riscv/syscalls" },
-            { label: "Directives", link: "/riscv/directives" }
+            { label: "Directives", link: "/riscv/directives" },
           ],
         },
         {

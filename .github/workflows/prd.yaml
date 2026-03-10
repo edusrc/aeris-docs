@@ -1,28 +1,30 @@
-name: AERIS-DOCS PROD GITHUB ACTIONS
+name: AERIS-DOCS PROD
 
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      - name: Build Astro
-        run: npm install && npm run build
+      - run: npm install
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - run: npm run build
+
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
+          branch: prod
           folder: dist
-          branch: prod  
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
