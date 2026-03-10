@@ -1,12 +1,13 @@
-name: Deploy to GitHub Pages
+name: AERIS DOCS DEPLOY
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches:
+      - main
+      - prod
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -15,25 +16,39 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+
+  build-and-push-prod:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
-      - name: Install, build and upload site
-        uses: withastro/action@v5
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
-  deploy:
-    needs: build
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Astro
+        run: npm run build
+
+      - name: Push build to prod
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: prod
+          folder: dist
+          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy-pages:
+    if: github.ref == 'refs/heads/prod'
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
