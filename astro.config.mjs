@@ -3,8 +3,10 @@ import starlight from "@astrojs/starlight";
 import remarkMermaid from "remark-mermaidjs";
 
 export default defineConfig({
-  site: "https://edusrc.github.io/aeris-docs",
+  site: "https://edusrc.github.io/aeris-docs/",
   base: "/aeris-docs/",
+  trailingSlash: "always",
+
   integrations: [
     starlight({
       title: "ÆRIS DOCS",
@@ -18,60 +20,50 @@ export default defineConfig({
       sidebar: [
         {
           label: "Introduction",
-          items: [{ label: "Overview", link: "/introduction" }],
+          items: [{ label: "Overview", link: "/introduction/" }],
         },
 
         {
           label: "Use Guide",
           items: [
-            { label: "Overview", link: "/use-guide/overview" },
-            { label: "User Interface", link: "/use-guide/user-interface" },
-            { label: "Editor Features", link: "/use-guide/editor-features" },
-            {
-              label: "Execution Controls",
-              link: "/use-guide/execution-controls",
-            },
-            { label: "Console & Syscalls", link: "/use-guide/console" },
-            { label: "Settings", link: "/use-guide/settings" },
+            { label: "Overview", link: "/use-guide/overview/" },
+            { label: "User Interface", link: "/use-guide/user-interface/" },
+            { label: "Editor Features", link: "/use-guide/editor-features/" },
+            { label: "Execution Controls", link: "/use-guide/execution-controls/" },
+            { label: "Console & Syscalls", link: "/use-guide/console/" },
+            { label: "Settings", link: "/use-guide/settings/" },
           ],
         },
 
         {
           label: "Architecture",
           items: [
-            { label: "Overview", link: "/architecture/overview" },
-            {
-              label: "Simulation Engine",
-              link: "/architecture/simulation-engine",
-            },
-            {
-              label: "Project Structure",
-              link: "/architecture/project-structure",
-            },
+            { label: "Overview", link: "/architecture/overview/" },
+            { label: "Simulation Engine", link: "/architecture/simulation-engine/" },
+            { label: "Project Structure", link: "/architecture/project-structure/" },
           ],
         },
 
         {
           label: "RISC-V",
           items: [
-            { label: "Overview", link: "/riscv/overview" },
-            { label: "RV32I", link: "/riscv/rv32i" },
-            { label: "Instructions", link: "/riscv/instructions" },
-            {
-              label: "Pseudo Instructions",
-              link: "/riscv/pseudo-instructions",
-            },
-            { label: "Syscalls", link: "/riscv/syscalls" },
-            { label: "Directives", link: "/riscv/directives" },
+            { label: "Overview", link: "/riscv/overview/" },
+            { label: "RV32I", link: "/riscv/rv32i/" },
+            { label: "Instructions", link: "/riscv/instructions/" },
+            { label: "Pseudo Instructions", link: "/riscv/pseudo-instructions/" },
+            { label: "Syscalls", link: "/riscv/syscalls/" },
+            { label: "Directives", link: "/riscv/directives/" },
           ],
         },
+
         {
           label: "Articles",
-          items: [{ label: "Articles", link: "/articles" }],
+          items: [{ label: "Articles", link: "/articles/" }],
         },
       ],
     }),
   ],
+
   markdown: {
     remarkPlugins: [remarkMermaid],
   },
